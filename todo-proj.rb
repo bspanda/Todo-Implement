@@ -15,17 +15,12 @@ class Todo
     @due_date < Date.today
   end
 
-  def complete?
-    @status == false
-  end
-
   def due_later?
     @due_date > Date.today
   end
 
   def to_displayable_string
-    display_status = due_today? ? "[X]" : "[ ]"
-    display_status = complete? ? "[ ]" : "[X]"
+    display_status = @status ? "[X]" : "[]"
     display_date = due_today? ? nil : @due_date
     "#{display_status} #{@some_text} #{display_date}"
   end
